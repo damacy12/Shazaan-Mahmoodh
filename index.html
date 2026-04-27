@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Shazaan Mahmoodh</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --cream:#F5F0E8;
+    --cream2:#EDE7D9;
+    --cream3:#E2D9C8;
+    --warm-dark:#2C2416;
+    --warm-mid:#5C4F3A;
+    --warm-soft:#8C7B64;
+    --warm-light:#B8A99A;
+    --accent:#8B5E3C;
+    --accent-light:#C8956A;
+    --white:#FDFBF7;
+  }
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'DM Sans',sans-serif;
+    background:var(--cream);
+    color:var(--warm-dark);
+    font-weight:300;
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+
+  /* ── NAV ── */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:1.25rem 3rem;
+    display:flex;align-items:center;justify-content:space-between;
+    background:rgba(245,240,232,0.85);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(139,94,60,0.12);
+  }
+  .nav-logo{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.2rem;font-weight:600;
+    letter-spacing:0.02em;
+    color:var(--warm-dark);
+  }
+  .nav-links{display:flex;gap:2.5rem;list-style:none}
+  .nav-links a{
+    font-size:0.8rem;font-weight:400;letter-spacing:0.1em;
+    text-transform:uppercase;text-decoration:none;
+    color:var(--warm-mid);
+    transition:color 0.2s;
+  }
+  .nav-links a:hover{color:var(--accent)}
+
+  /* ── HERO ── */
+  #hero{
+    min-height:100vh;
+    display:grid;grid-template-columns:1fr 1fr;
+    padding-top:5rem;
+  }
+  .hero-left{
+    display:flex;flex-direction:column;justify-content:center;
+    padding:5rem 3rem 5rem 6rem;
+  }
+  .hero-tag{
+    font-size:0.72rem;font-weight:500;letter-spacing:0.18em;
+    text-transform:uppercase;color:var(--accent);
+    margin-bottom:1.5rem;
+    display:flex;align-items:center;gap:0.75rem;
+  }
+  .hero-tag::before{content:'';width:2rem;height:1px;background:var(--accent)}
+  h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(2.8rem,5vw,4.2rem);
+    font-weight:300;line-height:1.1;
+    color:var(--warm-dark);
+    margin-bottom:0.5rem;
+  }
+  h1 em{font-style:italic;color:var(--accent)}
+  .hero-sub{
+    font-size:1rem;color:var(--warm-soft);font-weight:300;
+    margin-bottom:2.5rem;max-width:380px;line-height:1.8;
+  }
+  .hero-cta{
+    display:inline-flex;align-items:center;gap:0.6rem;
+    padding:0.8rem 1.8rem;
+    background:var(--accent);color:var(--white);
+    text-decoration:none;font-size:0.82rem;font-weight:400;
+    letter-spacing:0.08em;text-transform:uppercase;
+    border-radius:2px;
+    transition:background 0.2s,transform 0.15s;
+  }
+  .hero-cta:hover{background:var(--warm-dark);transform:translateY(-1px)}
+  .hero-right{
+    background:var(--cream2);
+    display:flex;align-items:center;justify-content:center;
+    position:relative;overflow:hidden;
+  }
+  .photo-frame{
+    width:380px;height:480px;
+    background:var(--cream3);
+    border:1px solid rgba(139,94,60,0.2);
+    position:relative;display:flex;align-items:center;justify-content:center;
+    flex-direction:column;gap:1rem;
+  }
+  .photo-frame::before{
+    content:'';position:absolute;top:-8px;left:-8px;right:8px;bottom:8px;
+    border:1px solid rgba(139,94,60,0.15);pointer-events:none;
+  }
+  .photo-placeholder{
+    width:80px;height:80px;border-radius:50%;
+    background:var(--cream3);border:1.5px dashed var(--warm-light);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .photo-placeholder svg{width:32px;height:32px;fill:var(--warm-light)}
+  .photo-hint{font-size:0.75rem;color:var(--warm-light);letter-spacing:0.05em;text-align:center;padding:0 2rem}
+
+  /* ── SECTION BASE ── */
+  section{padding:7rem 6rem}
+  .section-label{
+    font-size:0.7rem;font-weight:500;letter-spacing:0.2em;
+    text-transform:uppercase;color:var(--accent);
+    display:flex;align-items:center;gap:0.75rem;margin-bottom:3rem;
+  }
+  .section-label::before{content:'';width:2rem;height:1px;background:var(--accent)}
+  h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(2rem,3.5vw,2.8rem);
+    font-weight:300;color:var(--warm-dark);
+    line-height:1.15;margin-bottom:1.5rem;
+  }
+
+  /* ── ABOUT ── */
+  #about{background:var(--white)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+  .about-text p{color:var(--warm-mid);font-size:1rem;margin-bottom:1.2rem;line-height:1.9}
+  .about-text p:first-child::first-letter{
+    font-family:'Cormorant Garamond',serif;
+    font-size:3rem;font-weight:300;float:left;
+    margin:0.05em 0.1em 0 0;line-height:0.85;
+    color:var(--accent);
+  }
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
+  .stat{padding:1.5rem;background:var(--cream);border-left:2px solid var(--accent)}
+  .stat-num{
+    font-family:'Cormorant Garamond',serif;
+    font-size:2.2rem;font-weight:300;color:var(--warm-dark);line-height:1;
+  }
+  .stat-label{font-size:0.75rem;color:var(--warm-soft);letter-spacing:0.08em;margin-top:0.25rem;text-transform:uppercase}
+
+  /* ── SKILLS ── */
+  #skills{background:var(--cream)}
+  .skills-intro{color:var(--warm-mid);max-width:560px;margin-bottom:4rem;font-size:1rem;line-height:1.9}
+  .skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+  .skill-card{
+    padding:2rem 1.5rem;
+    background:var(--white);
+    border:1px solid rgba(139,94,60,0.1);
+    border-top:3px solid var(--accent);
+  }
+  .skill-card h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.2rem;font-weight:400;
+    color:var(--warm-dark);margin-bottom:1.2rem;
+  }
+  .skill-card ul{list-style:none}
+  .skill-card ul li{
+    font-size:0.82rem;color:var(--warm-soft);
+    padding:0.4rem 0;
+    border-bottom:1px solid rgba(139,94,60,0.08);
+    line-height:1.5;
+  }
+  .skill-card ul li:last-child{border-bottom:none}
+  .skill-card ul li::before{content:'↗ ';font-size:0.7rem;color:var(--accent-light)}
+
+  /* ── EXPERIENCE ── */
+  #experience{background:var(--white)}
+  .exp-list{display:flex;flex-direction:column;gap:0}
+  .exp-item{
+    display:grid;grid-template-columns:180px 1fr;
+    border-top:1px solid rgba(139,94,60,0.12);
+    padding:2.5rem 0;gap:3rem;
+    transition:background 0.2s;
+  }
+  .exp-item:last-child{border-bottom:1px solid rgba(139,94,60,0.12)}
+  .exp-date{
+    font-size:0.78rem;color:var(--warm-light);
+    letter-spacing:0.05em;padding-top:0.3rem;
+    line-height:1.6;
+  }
+  .exp-role h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.35rem;font-weight:400;color:var(--warm-dark);
+    margin-bottom:0.25rem;
+  }
+  .exp-org{
+    font-size:0.82rem;color:var(--accent);font-weight:400;
+    letter-spacing:0.05em;margin-bottom:1rem;
+  }
+  .exp-bullets{list-style:none}
+  .exp-bullets li{
+    font-size:0.9rem;color:var(--warm-mid);
+    padding:0.3rem 0 0.3rem 1rem;
+    border-left:1px solid var(--cream2);
+    margin-bottom:0.3rem;line-height:1.7;
+  }
+
+  /* ── PROJECTS ── */
+  #projects{background:var(--cream2)}
+  .projects-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem}
+  .project-card{
+    background:var(--white);
+    padding:2rem;
+    border:1px solid rgba(139,94,60,0.1);
+    position:relative;overflow:hidden;
+  }
+  .project-card::after{
+    content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,var(--accent),var(--accent-light));
+    transform:scaleX(0);transform-origin:left;
+    transition:transform 0.3s ease;
+  }
+  .project-card:hover::after{transform:scaleX(1)}
+  .project-icon{
+    width:44px;height:44px;
+    background:var(--cream);
+    border:1px solid rgba(139,94,60,0.15);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:1.25rem;
+    font-size:1.2rem;
+  }
+  .project-card h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.25rem;font-weight:400;
+    color:var(--warm-dark);margin-bottom:0.5rem;
+  }
+  .project-card p{font-size:0.87rem;color:var(--warm-soft);line-height:1.8}
+  .project-tag{
+    display:inline-block;margin-top:1.25rem;
+    font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--accent);border:1px solid rgba(139,94,60,0.3);
+    padding:0.25rem 0.75rem;
+  }
+
+  /* ── CONTACT ── */
+  #contact{background:var(--warm-dark);color:var(--cream)}
+  #contact .section-label{color:var(--accent-light)}
+  #contact .section-label::before{background:var(--accent-light)}
+  #contact h2{color:var(--cream);font-size:clamp(2.2rem,4vw,3.5rem)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;margin-top:3rem}
+  .contact-tagline{font-size:1rem;color:var(--warm-light);line-height:1.9;max-width:400px}
+  .contact-items{display:flex;flex-direction:column;gap:1.5rem}
+  .contact-item{
+    display:flex;align-items:center;gap:1rem;
+    padding-bottom:1.5rem;
+    border-bottom:1px solid rgba(245,240,232,0.08);
+  }
+  .contact-item:last-child{border-bottom:none}
+  .contact-icon{
+    width:40px;height:40px;flex-shrink:0;
+    border:1px solid rgba(245,240,232,0.15);
+    display:flex;align-items:center;justify-content:center;
+    font-size:0.9rem;color:var(--accent-light);
+  }
+  .contact-detail{display:flex;flex-direction:column;gap:0.1rem}
+  .contact-label{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--warm-soft)}
+  .contact-value{font-size:0.95rem;color:var(--cream)}
+
+  /* ── FOOTER ── */
+  footer{
+    background:var(--warm-dark);
+    border-top:1px solid rgba(245,240,232,0.06);
+    padding:2rem 6rem;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .footer-name{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--warm-soft)}
+  .footer-copy{font-size:0.75rem;color:var(--warm-soft);letter-spacing:0.05em}
+
+  /* ── SCROLL FADE ── */
+  .fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
+  .fade-in.visible{opacity:1;transform:none}
+
+  /* ── COURSES ── */
+  #courses{background:var(--cream)}
+  .courses-coming{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:4rem 2rem;
+    border:1.5px dashed rgba(139,94,60,0.25);
+    max-width:640px;margin:0 auto;
+  }
+  .courses-badge{
+    font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;
+    color:var(--white);background:var(--accent);
+    padding:0.3rem 1rem;margin-bottom:2rem;display:inline-block;
+  }
+  .courses-coming h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:2rem;font-weight:300;color:var(--warm-dark);
+    margin-bottom:1rem;
+  }
+  .courses-coming p{font-size:0.95rem;color:var(--warm-soft);line-height:1.9;max-width:480px}
+  .courses-notify{
+    margin-top:2rem;display:flex;gap:0;
+    border:1px solid rgba(139,94,60,0.25);overflow:hidden;
+  }
+  .courses-notify input{
+    flex:1;padding:0.75rem 1rem;
+    background:var(--white);border:none;outline:none;
+    font-family:'DM Sans',sans-serif;font-size:0.85rem;color:var(--warm-dark);
+  }
+  .courses-notify input::placeholder{color:var(--warm-light)}
+  .courses-notify button{
+    padding:0.75rem 1.5rem;background:var(--accent);color:var(--white);
+    border:none;cursor:pointer;font-size:0.8rem;letter-spacing:0.08em;
+    text-transform:uppercase;font-family:'DM Sans',sans-serif;
+    transition:background 0.2s;
+  }
+  .courses-notify button:hover{background:var(--warm-dark)}
+  .notify-thanks{display:none;margin-top:1rem;font-size:0.85rem;color:var(--accent)}
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px){
+    nav{padding:1rem 1.5rem}
+    .nav-links{gap:1.5rem}
+    #hero{grid-template-columns:1fr}
+    .hero-right{display:none}
+    .hero-left{padding:6rem 2rem 4rem}
+    section{padding:5rem 2rem}
+    .about-grid{grid-template-columns:1fr;gap:3rem}
+    .skills-grid{grid-template-columns:1fr 1fr}
+    .projects-grid{grid-template-columns:1fr}
+    .contact-grid{grid-template-columns:1fr;gap:3rem}
+    .exp-item{grid-template-columns:1fr;gap:0.5rem}
+    footer{padding:1.5rem 2rem;flex-direction:column;gap:0.5rem;text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Shazaan Mahmoodh</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <p class="hero-tag">Based in Colombo, Sri Lanka</p>
+    <h1>Shazaan<br/><em>Mahmoodh</em></h1>
+    <p class="hero-sub">Entrepreneur, business operator, market analyst &amp; culinary professional — building things from scratch, across industries.</p>
+    <a href="#about" class="hero-cta">Discover more ↓</a>
+  </div>
+  <div class="hero-right">
+    <div class="photo-frame">
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+      </div>
+      <p class="photo-hint">Replace this frame with your photo — just swap in an &lt;img&gt; tag</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">Who I am</div>
+  <div class="about-grid fade-in">
+    <div class="about-text">
+      <p>I'm Shafan — an entrepreneur and self-driven professional based in Colombo, Sri Lanka. I run a retail meat business, operate an online venture, and analyse financial markets independently. I built each of these from the ground up with no blueprint — just observation, discipline, and a willingness to learn.</p>
+      <p>My background spans business operations, culinary arts, and trading analysis. What ties it all together is a deep curiosity about how things work — whether that's a supply chain, a market structure, or a kitchen. I thrive in environments where I have to think on my feet and solve real problems.</p>
+      <p>Outside of work, I'm on a quiet journey to learn Japanese — currently holding JLPT N5 and working toward N3. Languages, like businesses, are built one day at a time.</p>
+    </div>
+    <div>
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-num">3+</div>
+          <div class="stat-label">Ventures founded</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">2+</div>
+          <div class="stat-label">Years operating</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">N5</div>
+          <div class="stat-label">JLPT certified</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Problems solved</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">What I do</div>
+  <h2>A rare mix of<br/><em style="font-style:italic;color:var(--accent)">disciplines</em></h2>
+  <p class="skills-intro">Most people specialise in one lane. I've built proficiency across business, finance, culinary arts, and digital operations — each sharpening the others in unexpected ways.</p>
+  <div class="skills-grid fade-in">
+    <div class="skill-card">
+      <h3>Business &amp; Management</h3>
+      <ul>
+        <li>Operations management</li>
+        <li>Accounting &amp; cash flow</li>
+        <li>Inventory &amp; suppliers</li>
+        <li>Customer relationships</li>
+        <li>Pricing strategy</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3>Trading &amp; Markets</h3>
+      <ul>
+        <li>Price action analysis</li>
+        <li>Liquidity &amp; market structure</li>
+        <li>Risk &amp; capital management</li>
+        <li>Trade planning &amp; execution</li>
+        <li>Performance tracking</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3>Culinary Arts</h3>
+      <ul>
+        <li>Pastry &amp; bakery (NVQ L3)</li>
+        <li>Kitchen operations</li>
+        <li>Food safety &amp; hygiene</li>
+        <li>Portion control</li>
+        <li>Team collaboration</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3>Digital &amp; General</h3>
+      <ul>
+        <li>E-commerce operations</li>
+        <li>Digital marketing</li>
+        <li>Brand development</li>
+        <li>Problem-solving</li>
+        <li>Japanese (N5 → N3)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Where I've worked</div>
+  <h2>Experience</h2>
+  <div class="exp-list fade-in">
+
+    <div class="exp-item">
+      <div class="exp-date">Jan 2025 — Present</div>
+      <div class="exp-role">
+        <h3>Owner &amp; Operator</h3>
+        <div class="exp-org">Retail Meat Shop · Sri Lanka</div>
+        <ul class="exp-bullets">
+          <li>Full end-to-end business management: purchasing, pricing, inventory, accounting</li>
+          <li>Built strong repeat customer base through consistent direct service</li>
+          <li>Developed dynamic pricing strategies tied to market demand and cost changes</li>
+          <li>Maintained full compliance with food safety and hygiene standards</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">Jul 2024 — Present</div>
+      <div class="exp-role">
+        <h3>Founder &amp; Operator</h3>
+        <div class="exp-org">SMDS · Online Business</div>
+        <ul class="exp-bullets">
+          <li>Founded and operate a self-funded online business from the ground up</li>
+          <li>Handle sourcing, marketing, fulfilment, and after-sales independently</li>
+          <li>Develop brand identity and growth strategies based on sales data</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">Oct 2025 — Apr 2026</div>
+      <div class="exp-role">
+        <h3>Commis II — Pastry &amp; Bakery</h3>
+        <div class="exp-org">Hungry Bar · Sri Lanka</div>
+        <ul class="exp-bullets">
+          <li>Specialised in pastry and bakery production in a fast-paced kitchen</li>
+          <li>Upheld strict food safety and hygiene standards throughout</li>
+          <li>Collaborated with kitchen team for timely, accurate service during peak hours</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-date">2025 — Present</div>
+      <div class="exp-role">
+        <h3>Independent Market Analyst</h3>
+        <div class="exp-org">Maven Trading (Prop Firm) · Remote</div>
+        <ul class="exp-bullets">
+          <li>Conduct technical analysis focusing on price action, liquidity, and market structure</li>
+          <li>Apply disciplined risk management with strict capital preservation rules</li>
+          <li>Track and review performance to refine strategy and execution over time</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">What I've built</div>
+  <h2>Projects &amp;<br/><em style="font-style:italic;color:var(--accent)">ventures</em></h2>
+  <div class="projects-grid fade-in">
+
+    <div class="project-card">
+      <div class="project-icon">🥩</div>
+      <h3>Retail Meat Shop</h3>
+      <p>A locally operated retail business built from scratch. Covers sourcing, inventory, supplier management, and direct customer sales — all self-managed.</p>
+      <span class="project-tag">Business · Operations</span>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">🛒</div>
+      <h3>SMDS — Online Store</h3>
+      <p>A self-founded online business handling product sourcing, digital marketing, customer communication, and order fulfilment independently.</p>
+      <span class="project-tag">E-commerce · Digital</span>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">📈</div>
+      <h3>Prop Firm Trading</h3>
+      <p>Active market analysis and structured trading at Maven Trading. Focused on price action strategies, liquidity mapping, and disciplined risk management.</p>
+      <span class="project-tag">Finance · Trading</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- COURSES -->
+<section id="courses">
+  <div class="section-label">Learn from me</div>
+  <h2>Trading <em style="font-style:italic;color:var(--accent)">Courses</em></h2>
+  <div class="courses-coming fade-in">
+    <span class="courses-badge">Coming Soon</span>
+    <h3>Structured courses on price action &amp; risk management</h3>
+    <p>I'm building a series of trading courses covering market structure, liquidity, price action strategies, and disciplined risk management — everything I've applied trading with Maven. Drop your email to be notified when the first course launches.</p>
+    <div class="courses-notify">
+      <input type="email" id="notify-email" placeholder="your@email.com"/>
+      <button onclick="handleNotify()">Notify me</button>
+    </div>
+    <p class="notify-thanks" id="notify-thanks">✓ You're on the list — I'll reach out when it's live!</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Get in touch</div>
+  <h2>Let's connect</h2>
+  <div class="contact-grid fade-in">
+    <p class="contact-tagline">Whether it's a business opportunity, a collaboration, or just a conversation — I'm open. Reach out and I'll get back to you.</p>
+    <div class="contact-items">
+      <div class="contact-item">
+        <div class="contact-icon">@</div>
+        <div class="contact-detail">
+          <span class="contact-label">Email</span>
+          <span class="contact-value">Damacy34@gmail.com</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">☎</div>
+        <div class="contact-detail">
+          <span class="contact-label">Phone / WhatsApp</span>
+          <span class="contact-value">+94 72 291 9102</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">in</div>
+        <div class="contact-detail">
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value">linkedin.com/in/yourprofile</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div class="contact-detail">
+          <span class="contact-label">Location</span>
+          <span class="contact-value">Colombo, Sri Lanka</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-name">Shazaan Mahmoodh</span>
+  <span class="footer-copy">© 2026 · Colombo, Sri Lanka</span>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}})
+},{threshold:0.12});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+function handleNotify(){
+  const email=document.getElementById('notify-email').value;
+  if(!email||!email.includes('@'))return;
+  document.querySelector('.courses-notify').style.display='none';
+  document.getElementById('notify-thanks').style.display='block';
+}
+</script>
+</body>
+</html>
